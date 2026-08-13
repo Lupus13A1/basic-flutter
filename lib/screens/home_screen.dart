@@ -1,4 +1,3 @@
-import 'package:basic_app/widgets/app_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -114,38 +113,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void _handleBottomNavTap(BuildContext context, int index) {
-    switch (index) {
-      case 0:
-        break;
-      case 2:
-        Navigator.pushReplacementNamed(context, '/profiles');
-        break;
-      default:
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            backgroundColor: _brutalYellow,
-            content: Text(
-              'COMING SOON',
-              style: GoogleFonts.spaceGrotesk(
-                fontWeight: FontWeight.w800,
-                color: _bgBlack,
-                letterSpacing: 2,
-              ),
-            ),
-          ),
-        );
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: _bgBlack,
-      bottomNavigationBar: AppBottomNavigationBar(
-        selectedIndex: 0,
-        onTap: (index) => _handleBottomNavTap(context, index),
-      ),
       body: AnimatedBuilder(
         animation: Listenable.merge([
           _headerController,
@@ -173,14 +144,14 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 sliver: SliverList(
                   delegate: SliverChildListDelegate([
                     const SizedBox(height: 12),
-                    _buildSectionLabel('QUICK ACTIONS', _brutalYellow, 0),
+                    _buildSectionLabel('ACTIVE SPRINT', _brutalYellow, 0),
                     const SizedBox(height: 8),
                     Row(
                       children: [
                         Expanded(
                           child: _buildQuickActionCard(
-                            icon: Icons.explore,
-                            label: 'EXPLORE',
+                            icon: Icons.list_alt,
+                            label: 'BACKLOG',
                             color: _brutalBlue,
                             index: 1,
                             onTap: () {},
@@ -189,8 +160,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         const SizedBox(width: 12),
                         Expanded(
                           child: _buildQuickActionCard(
-                            icon: Icons.people,
-                            label: 'COMMUNITY',
+                            icon: Icons.merge_type,
+                            label: 'OPEN PRS',
                             color: _brutalPink,
                             index: 2,
                             onTap: () {},
@@ -203,8 +174,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       children: [
                         Expanded(
                           child: _buildQuickActionCard(
-                            icon: Icons.leaderboard,
-                            label: 'RANKINGS',
+                            icon: Icons.fact_check,
+                            label: 'CODE REVIEW',
                             color: _brutalGreen,
                             index: 3,
                             onTap: () {},
@@ -213,8 +184,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         const SizedBox(width: 12),
                         Expanded(
                           child: _buildQuickActionCard(
-                            icon: Icons.bookmark,
-                            label: 'SAVED',
+                            icon: Icons.rocket_launch,
+                            label: 'DEPLOY',
                             color: _brutalYellow,
                             index: 4,
                             onTap: () {},
@@ -224,30 +195,30 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     ),
 
                     const SizedBox(height: 24),
-                    _buildSectionLabel('RECENT ACTIVITY', _brutalPink, 5),
+                    _buildSectionLabel('SYSTEM LOGS', _brutalPink, 5),
                     const SizedBox(height: 8),
                     _buildActivityItem(
-                      title: 'New follower request',
+                      title: 'Pushed to origin/main',
                       subtitle: '2 minutes ago',
-                      icon: Icons.person_add,
+                      icon: Icons.upload,
                       color: _brutalBlue,
                     ),
                     _buildActivityItem(
-                      title: 'Post reached 100 likes',
+                      title: 'Build failed: Pipeline #1042',
                       subtitle: '15 minutes ago',
-                      icon: Icons.favorite,
+                      icon: Icons.error_outline,
                       color: _brutalRed,
                     ),
                     _buildActivityItem(
-                      title: 'Achievement unlocked',
+                      title: 'Merged PR #89 - Brutalist UI',
                       subtitle: '1 hour ago',
-                      icon: Icons.emoji_events,
+                      icon: Icons.call_merge,
                       color: _brutalYellow,
                     ),
                     _buildActivityItem(
-                      title: 'Community update',
+                      title: 'System update v2.0 deployed',
                       subtitle: '3 hours ago',
-                      icon: Icons.campaign,
+                      icon: Icons.system_update_alt,
                       color: _brutalGreen,
                     ),
                     const SizedBox(height: 40),
@@ -377,7 +348,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       Transform.translate(
                         offset: const Offset(2, 2),
                         child: Text(
-                          'WELCOME BACK',
+                          'TERMINAL ACTIVE',
                           style: GoogleFonts.spaceGrotesk(
                             fontSize: 26,
                             fontWeight: FontWeight.w900,
@@ -387,7 +358,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                         ),
                       ),
                       Text(
-                        'WELCOME BACK',
+                        'TERMINAL ACTIVE',
                         style: GoogleFonts.spaceGrotesk(
                           fontSize: 26,
                           fontWeight: FontWeight.w900,
@@ -408,7 +379,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ),
                     ),
                     child: Text(
-                      'YOUR DASHBOARD IS READY',
+                      'SYSTEM ONLINE - DEV:GRID',
                       style: GoogleFonts.spaceMono(
                         fontSize: 11,
                         color: _brutalYellow,
@@ -420,11 +391,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   // Stats row
                   Row(
                     children: [
-                      _buildMiniStat('12', 'NEW', _brutalBlue),
+                      _buildMiniStat('42', 'COMMITS', _brutalBlue),
                       const SizedBox(width: 16),
-                      _buildMiniStat('89', 'ACTIVE', _brutalGreen),
+                      _buildMiniStat('14', 'TASKS', _brutalGreen),
                       const SizedBox(width: 16),
-                      _buildMiniStat('3', 'ALERTS', _brutalRed),
+                      _buildMiniStat('5d', 'STREAK', _brutalRed),
                     ],
                   ),
                 ],

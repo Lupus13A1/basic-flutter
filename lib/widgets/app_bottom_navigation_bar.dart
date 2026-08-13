@@ -28,10 +28,10 @@ class AppBottomNavigationBar extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
           child: Row(
-            children: List.generate(3, (i) {
+            children: List.generate(5, (i) {
               final isSelected = i == selectedIndex;
-              final icons = [Icons.home, Icons.search, Icons.person];
-              final labels = ['HOME', 'SEARCH', 'PROFILE'];
+              final icons = [Icons.grid_view, Icons.code, Icons.bolt, Icons.bar_chart, Icons.person];
+              final labels = ['HOME', 'PROJECTS', 'FOCUS', 'STATS', 'PROFILE'];
               return Expanded(
                 child: GestureDetector(
                   onTap: () => onTap(i),

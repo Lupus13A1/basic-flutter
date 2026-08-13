@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -666,7 +665,6 @@ class _BrutalSocialButton extends StatefulWidget {
 class _BrutalSocialButtonState extends State<_BrutalSocialButton> {
   bool _pressed = false;
 
-  static const _bgBlack = Color(0xFF0A0A0A);
   static const _gridGray = Color(0xFF1A1A1A);
 
   @override
